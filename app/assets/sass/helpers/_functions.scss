@@ -1,0 +1,12 @@
+@mixin animation($transition: all, $duratioan: 0.25s, $effect: ease-in-out, $delay: 0s){
+  -webkit-transition: $transition $duratioan $effect $delay;
+  -moz-transition: $transition $duratioan $effect $delay;
+  -o-transition: $transition $duratioan $effect $delay;
+  transition: $transition $duratioan $effect $delay;
+}
+
+@mixin nolist(){
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

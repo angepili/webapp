@@ -3,7 +3,13 @@ var gulp            = require('gulp'),
     autoprefixer    = require('gulp-autoprefixer'),
     cleanCss        = require('gulp-clean-css'),
     useref          = require('gulp-useref'),
+    image           = require('gulp-image'),
     browserSync     = require('browser-sync');
+
+gulp.task('image', function () {
+  gulp.src('./app/assets/img/*')
+    .pipe(gulp.dest('./dist/assets/img'));
+});
 
 gulp.task('html',function(){
     gulp.src('./app/*.html')
@@ -27,7 +33,7 @@ gulp.task('browser-sync',function(){
     browserSync.init();
 });
 
-gulp.task('watch',['style','html'],function(){
+gulp.task('watch',['style','html','image'],function(){
     browserSync.init({
         server: {
             baseDir: "./dist"
@@ -37,4 +43,4 @@ gulp.task('watch',['style','html'],function(){
     gulp.watch('./app/**/*.html').on('change', browserSync.reload);
 });
 
-gulp.task('default',['style','html']);
+gulp.task('default',['style','html','image']);
